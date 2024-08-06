@@ -12,21 +12,21 @@ model User {
   cpf                String      @unique
   bornDate           DateTime
   uf                 String
-  loanValue          Int
-  valueTopayPerMonth Int
+  valueToLoan        Int
+  valueToPayPerMonth Int
   createdAt          DateTime    @default(now())
   UserLoan           UserLoans[]
 }
 
 model UserLoans {
-  id                   Int      @id @default(autoincrement())
-  userId               Int
-  user                 User     @relation(fields: [userId], references: [id])
-  alreadyPaid          Boolean  @default(false)
-  balanceToPay         Int
-  interest             Int
-  adjustedBalanceToPay Int
-  portionValue         Int
-  monthToPay           DateTime
-  createdAt            DateTime @default(now())
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id])
+  alreadyPaid     Boolean  @default(false)
+  balance         Int
+  interestRate    Int
+  adjustedBalance Int
+  portion         Int
+  monthToPay      DateTime
+  createdAt       DateTime @default(now())
 }
