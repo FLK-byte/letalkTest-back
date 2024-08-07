@@ -14,7 +14,7 @@ export class LoanService {
     async createLoans(data: loanDTO): Promise<any> {
         try {
             let user = await this.UserService.findOne(data.userInfo.cpf);
-            if (user?.UserLoan?.lenght > 0) throw new Error('Usuario já possui emprestimo');
+            if (user?.UserLoan?.length > 0) throw new Error('Usuario já possui emprestimo')
             if (!user) user = await this.UserService.create(data.userInfo);
 
             await Promise.all(data.loansInfo.map(async (loan) => {
